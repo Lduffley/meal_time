@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  // unique identifer 
+  // unique identifier
   final String id;
-  // type of food 
+  // type of food
   final String title;
   // the background color
   final Color color;
