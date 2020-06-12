@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  // unique identifier
+  // unique identifer
   final String id;
   // type of food
   final String title;
