@@ -23,21 +23,22 @@ class CategoryItem extends StatelessWidget {
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Container(
-          padding: EdgeInsets.all(15),
-          child: Text(
-            title,
-            style: GoogleFonts.nunitoSans(
-                fontStyle: FontStyle.italic,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [color.withOpacity(0.7), color],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight),
-            borderRadius: BorderRadius.circular(15),
-          )),
+        padding: EdgeInsets.all(15),
+        child: Text(
+          title,
+          style: GoogleFonts.nunitoSans(
+              fontStyle: FontStyle.italic,
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [color.withOpacity(.65), color],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight),
+          borderRadius: BorderRadius.circular(15),
+        ),
+      ),
     );
   }
 }
