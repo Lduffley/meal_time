@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mealTime/dummy_data.dart';
+import 'package:mealtimeapp/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
 
-  Widget buildSectionTitle(String text) {
+  Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Text(
         text,
-        style: GoogleFonts.lato(fontWeight: FontWeight.bold, fontSize: 24),
+        style: Theme.of(context).textTheme.title,
       ),
     );
   }
@@ -50,47 +50,56 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            buildSectionTitle('Ingredients'),
+            buildSectionTitle(context, 'Ingredients'),
             buildContainer(
               ListView.builder(
                 itemBuilder: (ctx, index) => Card(
-                  color: Colors.amber,
+                  color: Theme.of(context).accentColor,
                   child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 10,
+                    ),
                     child: Text(
                       selectedMeal.ingredients[index],
-                      style: TextStyle(fontSize: 20),
+                      style: GoogleFonts.poppins(fontSize: 18),
                     ),
                   ),
                 ),
                 itemCount: selectedMeal.ingredients.length,
               ),
             ),
-            buildSectionTitle('Steps'),
+            buildSectionTitle(context, 'Steps'),
             buildContainer(
               ListView.builder(
-                itemCount: selectedMeal.steps.length,
-                itemBuilder: (context, index) => Column(
+                itemBuilder: (ctx, index) => Column(
                   children: [
                     ListTile(
                       leading: CircleAvatar(
-                        child: Text('# ${index + 1}'),
+                        child: Text('# ${(index + 1)}'),
                       ),
                       title: Text(
                         selectedMeal.steps[index],
-                        style: TextStyle(fontSize: 20),
+                        style: GoogleFonts.poppins(fontSize: 18),
                       ),
                     ),
                     Divider()
                   ],
                 ),
+                itemCount: selectedMeal.steps.length,
               ),
             ),
             SizedBox(
               height: 100,
-            ),
+            )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
       ),
     );
   }

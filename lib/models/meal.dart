@@ -1,10 +1,9 @@
 import 'package:flutter/foundation.dart';
 
 enum Complexity {
-  // Maps value to normal int
-  Simple, //0
-  Challenging, // 1
-  Hard, //2
+  Simple,
+  Challenging,
+  Hard,
 }
 
 enum Affordability {

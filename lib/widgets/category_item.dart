@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import '../screens/category_meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
@@ -9,10 +9,13 @@ class CategoryItem extends StatelessWidget {
 
   CategoryItem(this.id, this.title, this.color);
 
-  void selectCategory(BuildContext context) {
-    Navigator.of(context).pushNamed(
+  void selectCategory(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
       CategoryMealsScreen.routeName,
-      arguments: {'id': id, 'title': title},
+      arguments: {
+        'id': id,
+        'title': title,
+      },
     );
   }
 
@@ -23,19 +26,20 @@ class CategoryItem extends StatelessWidget {
       splashColor: Theme.of(context).primaryColor,
       borderRadius: BorderRadius.circular(15),
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Text(
           title,
-          style: GoogleFonts.nunitoSans(
-              fontStyle: FontStyle.italic,
-              fontSize: 20,
-              fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.title,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-              colors: [color.withOpacity(.65), color],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight),
+            colors: [
+              color.withOpacity(0.7),
+              color,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
           borderRadius: BorderRadius.circular(15),
         ),
       ),
