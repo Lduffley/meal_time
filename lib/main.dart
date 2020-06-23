@@ -50,6 +50,21 @@ class _MyAppState extends State<MyApp> {
   void toggleFavorite(String mealId) {
     final existingIndex =
         favoritedMeals.indexWhere((meal) => meal.id == mealId);
+    if (existingIndex > 0) {
+      setState(() {
+        favoritedMeals.removeAt(existingIndex);
+      });
+    } else {
+      setState(() {
+        favoritedMeals.add(
+          DUMMY_MEALS.firstWhere((meal) => meal.id == mealId),
+        );
+      });
+    }
+  }
+
+  bool isMealFavorite(String id) {
+    return favoritedMeals.any((meal) => meal.id == id);
   }
 
   @override
@@ -80,7 +95,8 @@ class _MyAppState extends State<MyApp> {
         '/': (ctx) => TabsScreen(favoritedMeals),
         CategoryMealsScreen.routeName: (ctx) =>
             CategoryMealsScreen(availableMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        MealDetailScreen.routeName: (ctx) =>
+            MealDetailScreen(toggleFavorite, isMealFavorite),
         FiltersScreen.routeName: (ctx) => FiltersScreen(filters, setFilters),
       },
       onGenerateRoute: (settings) {
