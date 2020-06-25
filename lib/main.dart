@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mealtimeapp/dummy_data.dart';
 import 'package:mealtimeapp/models/meal.dart';
 import 'package:mealtimeapp/screens/filters_screen.dart';
-import 'package:mealtimeapp/screens/meal_detail_screen.dart'
+import 'package:mealtimeapp/screens/meal_detail_screen.dart';
 
 import 'screens/category_meals_screen.dart';
 import 'screens/tabs_screen.dart';
